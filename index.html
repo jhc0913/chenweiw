@@ -1,0 +1,1795 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChenWeiElegance | 辰薇的个人网站</title>
+    <meta name="description" content="欢迎访问ChenWeiElegance，辰薇的个人网站。">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: #0a0a1a;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        
+        /* 星河背景效果 */
+        .starry-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            from {
+                transform: translateY(-10px) translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 头部样式 */
+        header {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        nav ul li a:hover::after {
+            width: 80%;
+        }
+        /* 区块样式 */
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.1) 0%, rgba(147, 112, 219, 0.1) 100%);
+            z-index: -1;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #2575fc;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 2px;
+        }
+        /* 首页样式 */
+        #home {
+            text-align: center;
+            padding: 10rem 0;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('h/WechatIMG15.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        #home h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+        #home p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        /* 人物介绍样式 */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .profile-image {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 2rem;
+            position: relative;
+        }
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid #6a11cb;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .profile-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease;
+        }
+        .profile-image img:hover {
+            transform: scale(1.05);
+        }
+        .profile-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        .profile-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2575fc;
+        }
+        .profile-content p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+        .profile-content .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        .profile-content .info-item i {
+            color: #6a11cb;
+            margin-right: 10px;
+            width: 24px;
+            text-align: center;
+        }
+        .profile-content ul {
+            list-style: none;
+            margin-top: 2rem;
+        }
+        .profile-content ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .profile-content ul li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #6a11cb;
+        }
+        /* 成就介绍样式 */
+        .achievements {
+            background-color: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .achievement-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .achievement-item {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border-left: 5px solid #6a11cb;
+            position: relative;
+            overflow: hidden;
+        }
+        .achievement-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        .achievement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .achievement-item:hover::before {
+            transform: scaleX(1);
+        }
+        .achievement-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2575fc;
+            display: flex;
+            align-items: center;
+        }
+        .achievement-item h3 i {
+            margin-right: 10px;
+            color: #6a11cb;
+        }
+        .achievement-item p {
+            margin-bottom: 0.8rem;
+        }
+        .achievement-item .time {
+            font-style: italic;
+            color: #777;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .achievement-item .time i {
+            margin-right: 8px;
+        }
+        /* 照片展示样式 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+    position: relative;
+    overflow: hidden;
+    height: 300px; /* 增加高度，让脸部更清晰可见 */
+    border-radius: 10px; /* 添加圆角，提升美观度 */
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保持图片比例并覆盖整个容器 */
+    object-position: center; /* 将图片主体居中显示 */
+    transition: transform 0.5s ease;
+}
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            transition: height 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            color: white;
+        }
+        .gallery-item:hover .overlay {
+            height: 100%;
+        }
+        .gallery-item .overlay p {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease 0.1s;
+        }
+        .gallery-item:hover .overlay p {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* 自我介绍样式 */
+        .self-intro {
+            background-color: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .self-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .self-intro p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            line-height: 1.8;
+        }
+        /* AI提问区域样式 */
+        .ai-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .chat-box {
+            height: 500px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background-color: #f9f9f9;
+        }
+        .message {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            margin-left: auto;
+        }
+        .ai-message {
+            background-color: #e9e9e9;
+            color: #333;
+        }
+        .typing {
+            animation: typing 1.4s infinite;
+        }
+        @keyframes typing {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+        .input-area {
+            display: flex;
+            gap: 1rem;
+        }
+        .input-area input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+        .input-area button {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .input-area button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        /* 页脚样式 */
+        footer {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #ffffff 0%, #ffffff 10%, transparent 10%, transparent 15%, #ffffff 15%, #ffffff 25%, transparent 25%, transparent 30%, #ffffff 30%, #ffffff 40%, transparent 40%, transparent 45%, #ffffff 45%, #ffffff 55%, transparent 55%, transparent 60%, #ffffff 60%, #ffffff 70%, transparent 70%, transparent 75%, #ffffff 75%, #ffffff 85%, transparent 85%, transparent 90%, #ffffff 90%, #ffffff 100%);
+        }
+        footer p {
+            margin-bottom: 1rem;
+        }
+        .social-icons {
+            margin-top: 1rem;
+        }
+        .social-icons a {
+            display: inline-block;
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                padding: 2rem;
+            }
+            .profile-image {
+                margin-right: 0;
+                margin-bottom: 2rem;
+                max-width: 250px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            #home h1 {
+                font-size: 3rem;
+            }
+            #home p {
+                font-size: 1.2rem;
+            }
+            .achievements, .self-intro, .ai-container {
+                padding: 2rem;
+            }
+            .chat-box {
+                height: 350px;
+            }
+        }
+        @media (max-width: 576px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 8px 0;
+            }
+            #home h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .gallery-item {
+                height: 200px;
+            }
+            .message {
+                max-width: 90%;
+            }
+        }
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            animation: fadeInUp 1s ease;
+        }
+        /* 滚动进度条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #5a0ebc 0%, #1e64e9 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="starry-sky"></div>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="#introduction"><i class="fas fa-user"></i> 人物介绍</a></li>
+                    <li><a href="#achievements"><i class="fas fa-trophy"></i> 成就介绍</a></li>
+                    <li><a href="#gallery"><i class="fas fa-images"></i> 照片展示</a></li>
+                    <li><a href="#self-intro"><i class="fas fa-info-circle"></i> 自我介绍</a></li>
+                    <li><a href="#ai-question"><i class="fas fa-robot"></i> AI提问</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h1>欢迎访问辰薇的个人网页</h1>
+            <p>一位充满活力与创造力的女性，探索生活的无限可能</p>
+            <a href="#introduction" class="btn">了解更多</a>
+            <a href="#ai-question" class="btn" style="margin-left: 15px;"><i class="fas fa-robot"></i> AI提问</a>
+        </div>
+    </section>
+
+    <section id="introduction">
+        <div class="container">
+            <h2 class="section-title">人物介绍</h2>
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img id="profileImg" alt="辰薇的照片">
+                </div>
+                <div class="profile-content">
+                    <h3>基本信息</h3>
+                    <div class="info-item">
+                        <i class="fas fa-user"></i>
+                        <p><strong>姓名：</strong>辰薇</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-venus"></i>
+                        <p><strong>性别：</strong>女</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-birthday-cake"></i>
+                        <p><strong>年龄：</strong>36岁</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-briefcase"></i>
+                        <p><strong>职业：</strong>女性教育家</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <p><strong>学历：</strong>研究生</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p><strong>联系方式：</strong>18611194268</p>
+                    </div>
+                    <h3 style="margin-top: 2rem;">个人特点</h3>
+                    <ul>
+                        <li>热情开朗，积极向上</li>
+                        <li>善于沟通，团队协作能力强</li>
+                        <li>学习能力强，勇于接受挑战</li>
+                        <li>富有创造力和想象力</li>
+                        <li>拥有很强的领导力是两家公司的CEO</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">成就介绍</h2>
+            <div class="achievements">
+                <div class="achievement-list">
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-award"></i> 粉红力量女性公益发起人</h3>
+                        <p>描述：作为粉红力量女性公益的发起人，致力于提升女性权益，帮助女性实现自我价值，组织过多场公益活动，影响了 thousands of women.</p>
+                        <p class="time"><i class="far fa-calendar-alt"></i> 时间：2023年</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-award"></i> 美在当下品牌创始人</h3>
+                        <p>描述：创立美在当下品牌，专注于女性成长与美丽事业，提供高品质的产品和服务，帮助女性发现和展现自身魅力。</p>
+                        <p class="time"><i class="far fa-calendar-alt"></i> 时间：2020年</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-award"></i> 福布斯创新企业家</h3>
+                        <p>描述：凭借卓越的创新能力和商业成就，被福布斯评选为创新企业家，成为行业内的杰出代表。</p>
+                        <p class="time"><i class="far fa-calendar-alt"></i> 时间：2022年</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+    <div class="container">
+        <h2 class="section-title">照片展示</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG13.jpg" alt="生活瞬间" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>生活瞬间</p></div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG14.jpg" alt="工作场景" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>工作场景</p></div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG15.jpg" alt="个人写真" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>个人写真</p></div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG18.jpg" alt="旅行记忆" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>旅行记忆</p></div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG5.jpg" alt="美食分享" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>美食分享</p></div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG7.jpg" alt="节日庆祝" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>节日庆祝</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="self-intro">
+        <div class="container">
+            <h2 class="section-title">自我介绍</h2>
+            <div class="self-intro">
+                <p>大家好，我是辰薇，今年36岁。我是一个充满活力和热情的女性，对生活充满了好奇和探索欲。assertTrue，只有自己做为自己喜欢的事情，才能真正做到最好。</p>
+                <p>在职业方面，我从事女性教育家已经有15年了。在这个领域，我不断学习和成长，积累了丰富的经验。我热爱我的工作，因为它不仅让我实现了经济独立，更让我找到了自我价值和成就感。assertTrue，只有自己做为自己喜欢的事情，才能真正做到最好。</p>
+                <p>生活中，我有很多兴趣爱好。我喜欢运动棒球，它让我充满活力；我也喜欢网球，它让我保持敏捷和专注。这些爱好丰富了我的生活，让我在忙碌的工作之余，能够放松身心，找到平衡。</p>
+                <p>我是一个善于沟通和团队协作的人。assertTrue，一个人的力量是有限的，但团队的力量是无限的。在团队中，我总是能够积极贡献自己的想法和力量，同时也善于倾听和学习他人的意见。认为，只有相互理解和支持，才能让团队取得更好的成绩。</p>
+                <p>未来，我希望能够成为全球最强的女性教育家。我知道，实现这个目标需要付出很多努力和汗水，但我相信，只要坚持不懈，就一定能够实现。我也希望能够认识更多志同道合的朋友，一起交流和成长。</p>
+                <p>感谢您访问我的个人网页，希望通过这个网页，您能够对我有更深入的了解。如果您有任何问题或建议，欢迎随时联系我。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai-question">
+        <div class="container">
+            <h2 class="section-title">AI提问</h2>
+            <div class="ai-container">
+                <div class="chat-box" id="chatBox">
+                    <div class="message ai-message">
+                        你好！我是辰薇的AI助手。我了解辰薇的详细信息，包括她的职业经历、成就、著作等。请问有什么我可以帮助你的吗？你可以尝试提问："辰薇是谁？"、"美在当下是什么？"、"辰薇的著作有哪些？"等。
+                    </div>
+                </div>
+                <div class="input-area">
+                    <input type="text" id="userInput" placeholder="请输入你的问题...">
+                    <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 ChenWeiElegance. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-weibo"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('nav a, .btn').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <script>
+        // 生成星河背景
+        function createStarrySky() {
+            const starrySky = document.querySelector('.starry-sky');
+            // 设置背景颜色为从淡红色到粉红色的渐变
+            starrySky.style.backgroundImage = 'linear-gradient(to bottom, #ff8080, #ff99cc)'; // 淡红色到粉红色渐变
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // 随机位置
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // 随机大小
+                const size = Math.random() * 3;
+                
+                // 调整星星颜色，确保在渐变背景中可见
+                // 使用白色或浅粉色系的星星
+                const hue = Math.random() * 20 + 340; // 340-360 是浅粉色区域
+                const saturation = Math.random() * 30 + 20; // 20-50%
+                const lightness = Math.random() * 20 + 85; // 85-105%，增加亮度以适应渐变背景
+                const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+                
+                // 随机动画持续时间
+                const duration = Math.random() * 10 + 5;
+                
+                // 随机延迟
+                const delay = Math.random() * 5;
+                
+                // 应用样式
+                star.style.left = `${x}%`;
+                star.style.top = `${y}%`;
+                star.style.width = `${size}px`;
+                star.style.height = `${size}px`;
+                star.style.backgroundColor = color;
+                star.style.animationDuration = `${duration}s`;
+                star.style.animationDelay = `${delay}s`;
+                
+                starrySky.appendChild(star);
+            }
+        }
+        
+        // 页面加载完成后创建星河
+        window.addEventListener('load', createStarrySky);
+    </script>
+
+    <script>
+        // AI问答功能
+        document.addEventListener('DOMContentLoaded', function() {
+            const chatBox = document.getElementById('chatBox');
+            const userInput = document.getElementById('userInput');
+            const sendBtn = document.getElementById('sendBtn');
+
+            // 增强版知识库 - 关于辰薇的详细信息
+            const knowledgeBase = [
+                {
+                    question: '辰薇是谁',
+                    keywords: ['辰薇', '简介', '个人资料'],
+                    answer: '辰薇是福布斯创新企业家、女性畅销书作家，知名电视栏目《美丽俏佳人》《非你莫属》《求职高手》等常驻嘉宾。自2010年起开始从事女性成长教育事业，是中国首个积极心理学女性传播发起人，同时也是国内最具规模和影响力女性社群创始人，已带领600万（数据截止2024年11月）女性获得"高配人生"。'
+                },
+                {
+                    question: '美在当下',
+                    keywords: ['美在当下', '品牌', '创立时间'],
+                    answer: '美在当下是辰薇于2014年创办的女性教育品牌，以女性成长为核心，汇集了国内百余名各行业顶尖专家，打造出涵盖家庭、事业、形象、财富、智慧、情感、亲子在内的优质课程，帮助万千女性提升自我价值，迈向幸福与卓越。'
+                },
+                {
+                    question: '辰薇的成就',
+                    keywords: ['成就', '荣誉', '奖项'],
+                    answer: '辰薇的主要成就包括：2013年被授予中国十大青年造型师；2014年创办女性教育品牌美在当下；2015年被授予中国美业百家名师；2016年至今蝉联中国美业教育杰出贡献者；2019年被授予中国商业联合会年度人物。此外，她还是福布斯创新企业家，带领600万女性获得"高配人生"。'
+                },
+                {
+                    question: '辰薇的著作',
+                    keywords: ['著作', '书籍', '作品'],
+                    answer: '辰薇著有多本作品，包括《美在当下形象管理》《美是一种信仰》和《美好从美开始》等。这些书籍主要围绕女性形象管理、个人成长和美学教育展开，旨在帮助女性提升自我价值和使用人生。'
+                },
+                {
+                    question: '辰薇的职业经历',
+                    keywords: ['职业经历', '工作', '历程'],
+                    answer: '辰薇的职业经历丰富，早期是国内一线知名美学顾问，曾为周杰伦、SHE、宁静、林宥嘉、潘玮柏等百余位一线艺人提供形象咨询服务。2014年创办美在当下品牌，转型为女性教育家和创业者。她还曾担任清华大学师资库最年轻导师，并在多个电视节目中担任常驻嘉宾。'
+                },
+                {
+                    question: '辰薇的教育背景',
+                    keywords: ['教育背景', '学历', '学习'],
+                    answer: '辰薇拥有深深的学术背景，毕业于知名大学，主修化学与生物学。此外，她还曾前往海外深造，进一步提升自己的学术水平和跨文化视野。这些教育经历为她后来的创业和事业发展奠定了坚实的基础。'
+                },
+                {
+                    question: '辰薇的电视节目',
+                    keywords: ['电视节目', '综艺', '嘉宾'],
+                    answer: '辰薇曾担任多个知名电视栏目的常驻嘉宾，包括《美丽俏佳人》《非你莫属》《求职高手》等。在这些节目中，她主要分享女性形象管理、职场发展和其他方面的专业知识和经验。'
+                },
+                {
+                    question: '辰薇的合作艺人',
+                    keywords: ['合作艺人', '明星', '客户'],
+                    answer: '辰薇曾与众多一线艺人合作，包括周杰伦、SHE、宁静、林宥嘉、潘玮柏等百余位知名艺人。她曾担任周杰伦地表巡回演唱会的梳化总监，其形象咨询服务受到业内的高度认可。'
+                },
+                {
+                    question: '美在当下的课程',
+                    keywords: ['课程', '培训', '教育内容'],
+                    answer: '美在当下的课程涵盖家庭、事业、形象、财富、智慧、情感、亲子等多个领域，由国内百余名各行业顶尖专家授课。课程旨在帮助女性全面提升自我价值，包括形象管理、职场技能、创业指导、家庭关系处理等方面的内容。'
+                },
+                {
+                    question: '辰薇的影响',
+                    keywords: ['影响', '贡献', '社会价值'],
+                    answer: '辰薇作为女性成长教育的先驱者，已带领600万女性获得"高配人生"。她通过美在当下品牌和个人影响力，帮助女性提升自我认知、形象管理能力和职业发展水平，促进女性在家庭和社会中发挥更大的作用，为推动女性的事业发展做出了显著贡献。'
+                }
+            ];
+
+            // 发送消息
+            function sendMessage() {
+                const message = userInput.value.trim();
+                if (message === '') return;
+
+                // 添加用户消息
+                addMessage(message, 'user');
+                userInput.value = '';
+
+                // 添加"正在输入"状态
+                const typingElement = document.createElement('div');
+                typingElement.classList.add('message', 'ai-message', 'typing');
+                typingElement.textContent = '正在输入...';
+                chatBox.appendChild(typingElement);
+                chatBox.scrollTop = chatBox.scrollHeight;
+
+                // 生成AI回复
+                setTimeout(() => {
+                    // 移除"正在输入"状态
+                    chatBox.removeChild(typingElement);
+                    
+                    const reply = generateReply(message);
+                    addMessage(reply, 'ai');
+                }, 1500);
+            }
+
+            // 添加消息到聊天框
+            function addMessage(message, type) {
+                const messageElement = document.createElement('div');
+                messageElement.classList.add('message');
+                messageElement.classList.add(type === 'user' ? 'user-message' : 'ai-message');
+                messageElement.textContent = message;
+                chatBox.appendChild(messageElement);
+                chatBox.scrollTop = chatBox.scrollHeight;
+            }
+
+            // 增强版匹配逻辑
+            function generateReply(question) {
+                // 转换为小写以便匹配
+                const lowerQuestion = question.toLowerCase();
+                
+                // 1. 精确匹配问题
+                for (const item of knowledgeBase) {
+                    if (lowerQuestion.includes(item.question.toLowerCase())) {
+                        return item.answer;
+                    }
+                }
+                
+                // 2. 关键词匹配
+                let bestMatch = null;
+                let maxKeywordsMatched = 0;
+                
+                for (const item of knowledgeBase) {
+                    let keywordsMatched = 0;
+                    
+                    for (const keyword of item.keywords) {
+                        if (lowerQuestion.includes(keyword.toLowerCase())) {
+                            keywordsMatched++;
+                        }
+                    }
+                    
+                    if (keywordsMatched > maxKeywordsMatched) {
+                        maxKeywordsMatched = keywordsMatched;
+                        bestMatch = item;
+                    }
+                }
+                
+                if (bestMatch && maxKeywordsMatched > 0) {
+                    return bestMatch.answer;
+                }
+
+                // 3. 如果没有匹配到，返回默认回复
+                return '感谢你的提问！关于辰薇的更多信息，你可以尝试询问："辰薇是谁？"、"美在当下是什么？"、"辰薇的成就有哪些？"、"辰薇的著作有哪些？"等。';
+            }
+
+            // 点击发送按钮发送消息
+            sendBtn.addEventListener('click', sendMessage);
+
+            // 按回车键发送消息
+            userInput.addEventListener('keypress', function(e) {
+                if (e.key === 'Enter') {
+                    sendMessage();
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChenWeiElegance | 辰薇的个人网站</title>
+    <meta name="description" content="欢迎访问ChenWeiElegance，辰薇的个人网站。">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 基础样式 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'PingFang SC', 'Microsoft YaHei', sans-serif;
+        }
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: #0a0a1a;
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+        
+        /* 星河背景效果 */
+        .starry-sky {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+        }
+        
+        .star {
+            position: absolute;
+            background-color: white;
+            border-radius: 50%;
+            animation: fall linear infinite;
+        }
+        
+        @keyframes fall {
+            from {
+                transform: translateY(-10px) translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateY(100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        /* 头部样式 */
+        header {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        nav ul {
+            display: flex;
+            list-style: none;
+            justify-content: center;
+        }
+        nav ul li {
+            margin: 0 15px;
+            position: relative;
+        }
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            padding: 8px 15px;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+        }
+        nav ul li a:hover {
+            background-color: rgba(255,255,255,0.2);
+            transform: translateY(-3px);
+        }
+        nav ul li a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 50%;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: all 0.3s ease;
+            transform: translateX(-50%);
+        }
+        nav ul li a:hover::after {
+            width: 80%;
+        }
+        /* 区块样式 */
+        section {
+            padding: 6rem 0;
+            position: relative;
+        }
+        section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, rgba(255, 182, 193, 0.1) 0%, rgba(147, 112, 219, 0.1) 100%);
+            z-index: -1;
+        }
+        .section-title {
+            text-align: center;
+            margin-bottom: 3rem;
+            font-size: 2.5rem;
+            color: #2575fc;
+            position: relative;
+            display: inline-block;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 2px;
+        }
+        /* 首页样式 */
+        #home {
+            text-align: center;
+            padding: 10rem 0;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('h/WechatIMG15.jpg');
+            background-size: cover;
+            background-position: center;
+            color: white;
+        }
+        #home h1 {
+            font-size: 4rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease;
+        }
+        #home p {
+            font-size: 1.5rem;
+            max-width: 800px;
+            margin: 0 auto 2rem;
+            text-shadow: 0 1px 5px rgba(0,0,0,0.3);
+            animation: fadeInUp 1s ease 0.2s both;
+        }
+        .btn {
+            display: inline-block;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            padding: 12px 30px;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            animation: fadeInUp 1s ease 0.4s both;
+        }
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+        }
+        /* 人物介绍样式 */
+        .profile-container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            background-color: white;
+            border-radius: 15px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .profile-image {
+            flex: 1;
+            min-width: 300px;
+            margin-right: 2rem;
+            position: relative;
+        }
+        .profile-image::before {
+            content: '';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            border: 5px solid #6a11cb;
+            z-index: -1;
+            opacity: 0.5;
+        }
+        .profile-image img {
+            max-width: 100%;
+            border-radius: 50%;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.5s ease;
+        }
+        .profile-image img:hover {
+            transform: scale(1.05);
+        }
+        .profile-content {
+            flex: 2;
+            min-width: 300px;
+        }
+        .profile-content h3 {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #2575fc;
+        }
+        .profile-content p {
+            margin-bottom: 1.2rem;
+            font-size: 1.1rem;
+        }
+        .profile-content .info-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.2rem;
+        }
+        .profile-content .info-item i {
+            color: #6a11cb;
+            margin-right: 10px;
+            width: 24px;
+            text-align: center;
+        }
+        .profile-content ul {
+            list-style: none;
+            margin-top: 2rem;
+        }
+        .profile-content ul li {
+            margin-bottom: 10px;
+            padding-left: 25px;
+            position: relative;
+        }
+        .profile-content ul li::before {
+            content: '✦';
+            position: absolute;
+            left: 0;
+            color: #6a11cb;
+        }
+        /* 成就介绍样式 */
+        .achievements {
+            background-color: white;
+            border-radius: 15px;
+            padding: 3rem;
+            margin-bottom: 2rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .achievement-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+        .achievement-item {
+            background-color: #f9f9f9;
+            padding: 2rem;
+            border-radius: 15px;
+            transition: all 0.3s ease;
+            border-left: 5px solid #6a11cb;
+            position: relative;
+            overflow: hidden;
+        }
+        .achievement-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            transform: scaleX(0);
+            transform-origin: left;
+            transition: transform 0.3s ease;
+        }
+        .achievement-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+        .achievement-item:hover::before {
+            transform: scaleX(1);
+        }
+        .achievement-item h3 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            color: #2575fc;
+            display: flex;
+            align-items: center;
+        }
+        .achievement-item h3 i {
+            margin-right: 10px;
+            color: #6a11cb;
+        }
+        .achievement-item p {
+            margin-bottom: 0.8rem;
+        }
+        .achievement-item .time {
+            font-style: italic;
+            color: #777;
+            margin-top: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        .achievement-item .time i {
+            margin-right: 8px;
+        }
+        /* 照片展示样式 */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 1.5rem;
+        }
+        .gallery-item {
+    position: relative;
+    overflow: hidden;
+    height: 300px; /* 增加高度，让脸部更清晰可见 */
+    border-radius: 10px; /* 添加圆角，提升美观度 */
+}
+.gallery-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 保持图片比例并覆盖整个容器 */
+    object-position: center; /* 将图片主体居中显示 */
+    transition: transform 0.5s ease;
+}
+.gallery-item:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+}
+        .gallery-item:hover img {
+            transform: scale(1.15);
+        }
+        .gallery-item .overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
+            transition: height 0.3s ease;
+            display: flex;
+            align-items: flex-end;
+            padding: 20px;
+            color: white;
+        }
+        .gallery-item:hover .overlay {
+            height: 100%;
+        }
+        .gallery-item .overlay p {
+            transform: translateY(20px);
+            opacity: 0;
+            transition: all 0.3s ease 0.1s;
+        }
+        .gallery-item:hover .overlay p {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        /* 自我介绍样式 */
+        .self-intro {
+            background-color: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        .self-intro::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 300px;
+            height: 300px;
+            background: linear-gradient(135deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 50%;
+            transform: translate(50%, -50%);
+            opacity: 0.05;
+            z-index: 0;
+        }
+        .self-intro p {
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+            position: relative;
+            z-index: 1;
+            line-height: 1.8;
+        }
+        /* AI提问区域样式 */
+        .ai-container {
+            background-color: white;
+            border-radius: 15px;
+            padding: 3rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        .chat-box {
+            height: 500px;
+            overflow-y: auto;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+            background-color: #f9f9f9;
+        }
+        .message {
+            margin-bottom: 1rem;
+            padding: 1rem;
+            border-radius: 10px;
+            max-width: 80%;
+            word-wrap: break-word;
+        }
+        .user-message {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            margin-left: auto;
+        }
+        .ai-message {
+            background-color: #e9e9e9;
+            color: #333;
+        }
+        .typing {
+            animation: typing 1.4s infinite;
+        }
+        @keyframes typing {
+            0% { opacity: 0.2; }
+            50% { opacity: 1; }
+            100% { opacity: 0.2; }
+        }
+        .input-area {
+            display: flex;
+            gap: 1rem;
+        }
+        .input-area input {
+            flex: 1;
+            padding: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 30px;
+            font-size: 1rem;
+        }
+        .input-area button {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        .input-area button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+        /* 页脚样式 */
+        footer {
+            background: linear-gradient(90deg, #6a11cb 0%, #2575fc 100%);
+            color: white;
+            text-align: center;
+            padding: 2rem 0;
+            position: relative;
+        }
+        footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, #ffffff 0%, #ffffff 10%, transparent 10%, transparent 15%, #ffffff 15%, #ffffff 25%, transparent 25%, transparent 30%, #ffffff 30%, #ffffff 40%, transparent 40%, transparent 45%, #ffffff 45%, #ffffff 55%, transparent 55%, transparent 60%, #ffffff 60%, #ffffff 70%, transparent 70%, transparent 75%, #ffffff 75%, #ffffff 85%, transparent 85%, transparent 90%, #ffffff 90%, #ffffff 100%);
+        }
+        footer p {
+            margin-bottom: 1rem;
+        }
+        .social-icons {
+            margin-top: 1rem;
+        }
+        .social-icons a {
+            display: inline-block;
+            color: white;
+            margin: 0 10px;
+            font-size: 1.5rem;
+            transition: transform 0.3s ease;
+        }
+        .social-icons a:hover {
+            transform: translateY(-5px);
+        }
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .profile-container {
+                flex-direction: column;
+                padding: 2rem;
+            }
+            .profile-image {
+                margin-right: 0;
+                margin-bottom: 2rem;
+                max-width: 250px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+            .section-title {
+                font-size: 2rem;
+            }
+            #home h1 {
+                font-size: 3rem;
+            }
+            #home p {
+                font-size: 1.2rem;
+            }
+            .achievements, .self-intro, .ai-container {
+                padding: 2rem;
+            }
+            .chat-box {
+                height: 350px;
+            }
+        }
+        @media (max-width: 576px) {
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            nav ul li {
+                margin: 8px 0;
+            }
+            #home h1 {
+                font-size: 2.5rem;
+            }
+            .section-title {
+                font-size: 1.8rem;
+            }
+            .gallery-item {
+                height: 200px;
+            }
+            .message {
+                max-width: 90%;
+            }
+        }
+        /* 动画效果 */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-in {
+            animation: fadeInUp 1s ease;
+        }
+        /* 滚动进度条 */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(180deg, #6a11cb 0%, #2575fc 100%);
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(180deg, #5a0ebc 0%, #1e64e9 100%);
+        }
+    </style>
+</head>
+<body>
+    <div class="starry-sky"></div>
+    <header>
+        <div class="container">
+            <nav>
+                <ul>
+                    <li><a href="#home"><i class="fas fa-home"></i> 首页</a></li>
+                    <li><a href="#introduction"><i class="fas fa-user"></i> 人物介绍</a></li>
+                    <li><a href="#achievements"><i class="fas fa-trophy"></i> 成就介绍</a></li>
+                    <li><a href="#gallery"><i class="fas fa-images"></i> 照片展示</a></li>
+                    <li><a href="#self-intro"><i class="fas fa-info-circle"></i> 自我介绍</a></li>
+                    <li><a href="#ai-question"><i class="fas fa-robot"></i> AI提问</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <section id="home">
+        <div class="container">
+            <h1>欢迎访问辰薇的个人网页</h1>
+            <p>一位充满活力与创造力的女性，探索生活的无限可能</p>
+            <a href="#introduction" class="btn">了解更多</a>
+            <a href="#ai-question" class="btn" style="margin-left: 15px;"><i class="fas fa-robot"></i> AI提问</a>
+        </div>
+    </section>
+
+    <section id="introduction">
+        <div class="container">
+            <h2 class="section-title">人物介绍</h2>
+            <div class="profile-container">
+                <div class="profile-image">
+                    <img id="profileImg" alt="辰薇的照片">
+                </div>
+                <div class="profile-content">
+                    <h3>基本信息</h3>
+                    <div class="info-item">
+                        <i class="fas fa-user"></i>
+                        <p><strong>姓名：</strong>辰薇</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-venus"></i>
+                        <p><strong>性别：</strong>女</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-birthday-cake"></i>
+                        <p><strong>年龄：</strong>36岁</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-briefcase"></i>
+                        <p><strong>职业：</strong>女性教育家</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-graduation-cap"></i>
+                        <p><strong>学历：</strong>研究生</p>
+                    </div>
+                    <div class="info-item">
+                        <i class="fas fa-phone"></i>
+                        <p><strong>联系方式：</strong>18611194268</p>
+                    </div>
+                    <h3 style="margin-top: 2rem;">个人特点</h3>
+                    <ul>
+                        <li>热情开朗，积极向上</li>
+                        <li>善于沟通，团队协作能力强</li>
+                        <li>学习能力强，勇于接受挑战</li>
+                        <li>富有创造力和想象力</li>
+                        <li>拥有很强的领导力是两家公司的CEO</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="achievements">
+        <div class="container">
+            <h2 class="section-title">成就介绍</h2>
+            <div class="achievements">
+                <div class="achievement-list">
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-award"></i> 粉红力量女性公益发起人</h3>
+                        <p>描述：作为粉红力量女性公益的发起人，致力于提升女性权益，帮助女性实现自我价值，组织过多场公益活动，影响了 thousands of women.</p>
+                        <p class="time"><i class="far fa-calendar-alt"></i> 时间：2023年</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-award"></i> 美在当下品牌创始人</h3>
+                        <p>描述：创立美在当下品牌，专注于女性成长与美丽事业，提供高品质的产品和服务，帮助女性发现和展现自身魅力。</p>
+                        <p class="time"><i class="far fa-calendar-alt"></i> 时间：2020年</p>
+                    </div>
+                    <div class="achievement-item">
+                        <h3><i class="fas fa-award"></i> 福布斯创新企业家</h3>
+                        <p>描述：凭借卓越的创新能力和商业成就，被福布斯评选为创新企业家，成为行业内的杰出代表。</p>
+                        <p class="time"><i class="far fa-calendar-alt"></i> 时间：2022年</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="gallery">
+    <div class="container">
+        <h2 class="section-title">照片展示</h2>
+        <div class="gallery">
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG13.jpg" alt="生活瞬间" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>生活瞬间</p></div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG14.jpg" alt="工作场景" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>工作场景</p></div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG15.jpg" alt="个人写真" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>个人写真</p></div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG18.jpg" alt="旅行记忆" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>旅行记忆</p></div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG5.jpg" alt="美食分享" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>美食分享</p></div>
+            </div>
+            <div class="gallery-item">
+                <img class="gallery-img" data-img="WechatIMG7.jpg" alt="节日庆祝" style="object-fit: cover; object-position: center; height: 300px;">
+                <div class="overlay"><p>节日庆祝</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <section id="self-intro">
+        <div class="container">
+            <h2 class="section-title">自我介绍</h2>
+            <div class="self-intro">
+                <p>大家好，我是辰薇，今年36岁。我是一个充满活力和热情的女性，对生活充满了好奇和探索欲。assertTrue，只有自己做为自己喜欢的事情，才能真正做到最好。</p>
+                <p>在职业方面，我从事女性教育家已经有15年了。在这个领域，我不断学习和成长，积累了丰富的经验。我热爱我的工作，因为它不仅让我实现了经济独立，更让我找到了自我价值和成就感。assertTrue，只有自己做为自己喜欢的事情，才能真正做到最好。</p>
+                <p>生活中，我有很多兴趣爱好。我喜欢运动棒球，它让我充满活力；我也喜欢网球，它让我保持敏捷和专注。这些爱好丰富了我的生活，让我在忙碌的工作之余，能够放松身心，找到平衡。</p>
+                <p>我是一个善于沟通和团队协作的人。assertTrue，一个人的力量是有限的，但团队的力量是无限的。在团队中，我总是能够积极贡献自己的想法和力量，同时也善于倾听和学习他人的意见。认为，只有相互理解和支持，才能让团队取得更好的成绩。</p>
+                <p>未来，我希望能够成为全球最强的女性教育家。我知道，实现这个目标需要付出很多努力和汗水，但我相信，只要坚持不懈，就一定能够实现。我也希望能够认识更多志同道合的朋友，一起交流和成长。</p>
+                <p>感谢您访问我的个人网页，希望通过这个网页，您能够对我有更深入的了解。如果您有任何问题或建议，欢迎随时联系我。</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="ai-question">
+        <div class="container">
+            <h2 class="section-title">AI提问</h2>
+            <div class="ai-container">
+                <div class="chat-box" id="chatBox">
+                    <div class="message ai-message">
+                        你好！我是辰薇的AI助手。我了解辰薇的详细信息，包括她的职业经历、成就、著作等。请问有什么我可以帮助你的吗？你可以尝试提问："辰薇是谁？"、"美在当下是什么？"、"辰薇的著作有哪些？"等。
+                    </div>
+                </div>
+                <div class="input-area">
+                    <input type="text" id="userInput" placeholder="请输入你的问题...">
+                    <button id="sendBtn"><i class="fas fa-paper-plane"></i></button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2023 ChenWeiElegance. All rights reserved.</p>
+            <div class="social-icons">
+                <a href="#"><i class="fab fa-weixin"></i></a>
+                <a href="#"><i class="fab fa-weibo"></i></a>
+                <a href="#"><i class="fab fa-linkedin"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // 平滑滚动
+        document.querySelectorAll('nav a, .btn').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetElement = document.querySelector(targetId);
+                window.scrollTo({
+                    top: targetElement.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // 滚动动画
+        const observerOptions = {
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('fade-in');
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section').forEach(section => {
+            observer.observe(section);
+        });
+    </script>
+
+    <script>
+        // 生成星河背景
+        function createStarrySky() {
+            const starrySky = document.querySelector('.starry-sky');
+            // 设置背景颜色为从淡红色到粉红色的渐变
+            starrySky.style.backgroundImage = 'linear-gradient(to bottom, #ff8080, #ff99cc)'; // 淡红色到粉红色渐变
+            const starCount = 150;
+            
+            for (let i = 0; i < starCount; i++) {
+                const star = document.createElement('div');
+                star.classList.add('star');
+                
+                // 随机位置
+                const x = Math.random() * 100;
+                const y = Math.random() * 100;
+                
+                // 随机大小
+                const size = Math.random() * 3;
+                
+                // 调整星星颜色，确保在渐变背景中可见
+                // 使用白色或浅粉色系的星星
+                const hue = Math.random() * 20 + 340; // 340-360 是浅粉色区域
+                const saturation = Math.random() * 30 + 20; // 20-50%
+                const lightness = Math.random() * 20 + 85; // 85-105%，增加亮度以适应渐变背景
+                const color = `hsl(${hue}, ${saturation}%, ${lightness}%)`
